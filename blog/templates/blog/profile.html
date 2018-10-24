@@ -1,0 +1,36 @@
+{% extends 'blog/twocol.html' %}
+
+{% block content %}
+<h3>Profile</h3>
+<p>Website preview</p>
+<table style="width: 50%">
+<tr>
+	<th>Main Content</th>
+	<th>Sidebar</th>
+</tr>
+{% for l, r in display_sections %}
+<tr>
+	<td style="width: 70%">{{ l.title }} ({{ l.index }})</td>
+	<td>{{ r.title }} ({{ r.index }})</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
+
+{% block nav %}
+<h3>Quick links</h3>
+<ul>
+    <li><a href="{% url 'front_page' %}">Home Page</a>
+    <li><a href="{% url 'admin:blog_section_changelist' %}">Manage Sections</a></li>
+    <li><a href="{% url 'admin:blog_section_add' %}">Add a Section</a></li>
+    <li><a href="{% url 'add_items' %}">Add some items</a></li>
+    <li>
+    	<p>Manage Items</p>
+    	<ul>
+    		{% for section in sections %}
+    		<li><a href="{% url 'add_items' section=section.slug %}">{{ section.title }}</a></li>
+    		{% endfor %}
+    	</ul>
+    </li>
+</ul>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'blog/twocol.html' %}
+
+{% block content %}
+{% for section in sections %}
+<section>
+    <h3>{{ section.title }}</h3>
+    {{ section.display_content }}
+</section>
+{% endfor %}
+{% endblock %}
+
+{% block nav %}
+{% for section in side_sections %}
+<section>
+    <h3>{{ section.title }}</h3>
+    {{ section.display_content }}
+</section>
+{% endfor %}
+{% endblock %}

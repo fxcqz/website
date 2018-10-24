@@ -1,0 +1,39 @@
+{% extends 'blog/twocol.html' %}
+
+{% block extracss %}
+<style>
+.item-form {
+	padding: 1rem;
+	border: 1px #eaeaea solid;
+	margin-bottom: 1rem;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<h3>Add Items</h3>
+{% if forms.errors %}
+{% for error in forms.errors %}
+<p style="color:#ff0000;">{{ error }}</p>
+{% endfor %}
+{% endif %}
+<form method="post" action="{% url 'add_items' %}" enctype="multipart/form-data">
+{% csrf_token %}
+{{ forms.management_form }}
+{% for form in forms %}
+<div class="item-form">
+  <table>
+  {{ form }}
+</table>
+</div>
+{% endfor %}
+<button type="submit">{% if adding %}Add Items{% else %}Edit Items{% endif %}</button>
+</form>
+{% endblock %}
+
+{% block nav %}
+<h3>Quick links</h3>
+<ul>
+    <li><a href="{% url 'front_page' %}">Home Page</a>
+</ul>
+{% endblock %}

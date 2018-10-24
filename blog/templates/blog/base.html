@@ -1,0 +1,19 @@
+{% load static %}
+<!doctype html>
+<html>
+    <head>
+        <title>Barely laughing</title>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Spectral|Just+Me+Again+Down+Here|Ubuntu+Mono" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
+        {% block extracss %}
+        {% endblock %}
+    </head>
+    <body>
+        <header><h1>{{ config.title }}</h1></header>
+        <main>
+            {% block basearea %}
+            {% endblock %}
+        </main>
+    </body>
+</html>

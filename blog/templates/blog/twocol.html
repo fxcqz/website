@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+
+{% block extracss %}
+{% endblock %}
+
+{% block basearea %}
+<content>
+    {% block content %}
+    {% endblock %}
+</content>
+<nav>
+	{% if user.is_authenticated %}
+	⭐ Hello, <a href="{% url 'profile' %}">{{user.username}}</a>. ⭐
+	{% endif %}
+
+    {% block nav %}
+    {% endblock %}
+</nav>
+{% endblock %}

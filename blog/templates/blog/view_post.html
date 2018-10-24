@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+
+{% block extracss %}
+<style>
+article {
+    margin: auto;
+    width: 70%;
+    text-align: justify;
+}
+main {
+    display: unset !important;
+}
+</style>
+{% endblock %}
+
+{% block basearea %}
+<content>
+<article>
+<h1>{{ post.title }}</h1>
+{% autoescape off %}
+{{ post.show_post }}
+{% endautoescape %}
+<p><a href="{% url 'front_page' %}">&laquo; Return</a> &bull; {{ post.tags }} &bull; <em>published {{ post.published }}</em></p>
+</article>
+</content>
+{% endblock %}

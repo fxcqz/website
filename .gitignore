@@ -1,0 +1,10 @@
+__pycache__
+db.sqlite3
+env/
+mainsite/secret.txt
+blog/static/uploads/
+bin/
+certbot.log
+mainsite/
+MAINTENANCE
+blog/static/admin

@@ -1,0 +1,44 @@
+{% extends 'blog/base.html' %}
+
+{% block extracss %}
+<style>
+    main {
+        width: 50%;
+        margin-top: 5rem;
+        margin: auto;
+        border: 1px #eaeaea solid;
+        padding: 1rem;
+        display: inherit;
+    }
+</style>
+{% endblock %}
+
+{% block basearea %}
+{% if form.errors %}
+<h3 style="color: #ce2b4e">Gah, errors!</h3>
+{% elif user.is_authenticated %}
+<h3>Hmm, you're logged in.</h3>
+{% else %}
+<h3>Care to login, friend?</h3>
+{% endif %}
+
+{% if user.is_authenticated %}
+<p>Go to your <a href="{% url 'profile' %}">profile</a>.</p>
+{% else %}
+<form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td style="text-align: right">{{ form.username.label_tag }}</td>
+            <td>{{ form.username }}</td>
+        </tr>
+        <tr>
+            <td style="text-align: right">{{ form.password.label_tag }}</td>
+            <td>{{ form.password }}</td>
+        </tr>
+    </table>
+    <button type="submit">Login</button>
+    <input type="hidden" name="next" value="{{ next }}" />
+</form>
+{% endif %}
+{% endblock %}
